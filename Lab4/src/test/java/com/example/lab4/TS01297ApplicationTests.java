@@ -1,10 +1,10 @@
-package com.poly.lab4;
+package com.example.lab4;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Lab4ApplicationTests {
+class TS01297ApplicationTests {
 
 	@Test
 	void contextLoads() {
