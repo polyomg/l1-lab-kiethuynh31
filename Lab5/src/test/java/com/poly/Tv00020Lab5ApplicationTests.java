@@ -1,13 +1,13 @@
-package com.poly.lab5;
+package com.poly;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Lab5ApplicationTests {
+class Tv00020Lab5ApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
