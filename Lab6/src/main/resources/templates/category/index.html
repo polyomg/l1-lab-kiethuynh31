@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý loại hàng</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        table, th, td { border: 1px solid #ccc; }
+        th, td { padding: 8px; text-align: left; }
+        input { margin: 3px; padding: 5px; }
+        button { margin: 3px; padding: 5px 10px; }
+        h2 { color: #0077cc; }
+    </style>
+</head>
+<body>
+    <h2>QUẢN LÝ LOẠI HÀNG</h2>
+
+    <div th:replace="category/_form :: formFragment"></div>
+--------------
+    <div th:replace="category/_table :: tableFragment"></div>
+</body>
+</html>

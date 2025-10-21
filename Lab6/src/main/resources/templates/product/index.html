@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Sản phẩm</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 8px; border: 1px solid #ccc; text-align: left; }
+        input, select { padding: 6px; margin: 4px 0; width: 100%; box-sizing: border-box; }
+        .row { display: flex; gap: 20px; }
+        .col { flex: 1; }
+        button { padding: 6px 12px; margin-right: 6px; }
+    </style>
+</head>
+<body>
+    <h2>QUẢN LÝ SẢN PHẨM</h2>
+
+    <div th:replace="product/_form :: formFragment"></div>
+    <hr/>
+    <div th:replace="product/_table :: tableFragment"></div>
+</body>
+</html>

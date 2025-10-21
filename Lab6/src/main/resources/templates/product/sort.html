@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sắp xếp sản phẩm</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 8px; border: 1px solid #ccc; }
+        th a { color: #0077cc; text-decoration: none; }
+        th a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<h2>SẮP XẾP SẢN PHẨM THEO: <span th:text="${field}"></span></h2>
+
+<table>
+    <thead>
+        <tr>
+            <th><a href="/product/sort?field=id">Mã</a></th>
+            <th><a href="/product/sort?field=name">Tên</a></th>
+            <th><a href="/product/sort?field=price">Giá</a></th>
+            <th><a href="/product/sort?field=createDate">Ngày tạo</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="p : ${items}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${#numbers.formatDecimal(p.price,0,'COMMA',0,'POINT')} + ' VNĐ'"></td>
+            <td th:text="${#dates.format(p.createDate, 'dd/MM/yyyy')}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

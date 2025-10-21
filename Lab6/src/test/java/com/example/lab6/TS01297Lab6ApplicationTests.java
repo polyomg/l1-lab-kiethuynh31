@@ -1,13 +1,13 @@
-package com.poly.lab6;
+package com.example.lab6;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Lab6ApplicationTests {
+class TS01297Lab6ApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }

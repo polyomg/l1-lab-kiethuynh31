@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Phân trang sản phẩm</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 8px; border: 1px solid #ccc; }
+        a { margin: 0 5px; color: #0077cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<h2>DANH SÁCH SẢN PHẨM (PHÂN TRANG)</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Ngày tạo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="p : ${page.content}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${#numbers.formatDecimal(p.price,0,'COMMA',0,'POINT')} + ' VNĐ'"></td>
+            <td th:text="${#dates.format(p.createDate, 'dd/MM/yyyy')}"></td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="margin-top:15px;">
+    <a th:href="@{|/product/page?p=0|}">Đầu</a>
+    <a th:href="@{|/product/page?p=${page.number - 1}|}" th:if="${!page.first}">Trước</a>
+    <a th:href="@{|/product/page?p=${page.number + 1}|}" th:if="${!page.last}">Sau</a>
+    <a th:href="@{|/product/page?p=${page.totalPages - 1}|}">Cuối</a>
+</div>
+
+<ul style="margin-top:15px;">
+    <li>Trang hiện tại: [[${page.number + 1}]] / [[${page.totalPages}]]</li>
+    <li>Tổng số sản phẩm: [[${page.totalElements}]]</li>
+    <li>Số phần tử/trang: [[${page.size}]]</li>
+</ul>
+
+</body>
+</html>
