@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+</head>
+<body>
+<h2>Chỉnh sửa hồ sơ</h2>
+
+<p style="color:green" th:text="${message}"></p>
+
+<form action="/account/update-profile" method="post">
+    <label>Username:</label>
+    <input name="username" th:value="${account.username}" readonly><br>
+
+    <label>Fullname:</label>
+    <input name="fullname" th:value="${account.fullname}"><br>
+
+    <label>Password:</label>
+    <input name="password" type="password" th:value="${account.password}"><br><hr>
+
+    <button type="submit">Cập nhật</button>
+</form>
+
+<p><a href="/">← Về trang chủ</a></p>
+</body>
+</html>
