@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h2>Welcome to Lab 8</h2>
+
+<p th:if="${session.user != null}">
+    Xin chào, <b th:text="${session.user.fullname}"></b> |
+    <a href="/auth/logout">Logout</a>
+</p>
+<p th:if="${session.user == null}">
+    <a href="/auth/login">Login</a>
+</p>
+
+<hr>
+<ul>
+    <li><a href="/mail/send">Gửi email test</a></li>
+    <li><a href="/account/edit-profile">Sửa hồ sơ</a></li>
+    <li><a href="/account/change-password">Đổi mật khẩu</a></li>
+    <li><a href="/admin/home/index">Trang admin</a></li>
+</ul>
+</body>
+</html>

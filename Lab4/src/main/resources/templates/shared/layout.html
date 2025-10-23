@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="view(title, content)">
+<head>
+    <title th:replace="${title}">TITLE</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <!-- header lấy từ file i18n -->
+    <header>
+        <h1 th:text="#{header.name}">Online Shopping</h1>
+    </header>
+
+    <nav th:replace="~{/shared/menu}">MENU</nav>
+
+    <article th:replace="${content}">CONTENT</article>
+
+    <footer>
+        <hr>
+        <th:block th:utext="#{footer.copy}">&copy; 2025 by Văn Phát ở FPT</th:block>
+    </footer>
+</body>
+</html>

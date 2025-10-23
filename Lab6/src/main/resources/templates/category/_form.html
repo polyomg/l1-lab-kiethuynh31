@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="formFragment">
+    <form th:object="${item}" method="post">
+        <label>Mã loại hàng:</label><br>
+        <input th:field="*{id}" placeholder="Nhập mã loại hàng..."/><br>
+        <label>Tên loại hàng:</label><br>
+        <input th:field="*{name}" placeholder="Nhập tên loại hàng..."/><br>
+        <hr>
+        <button formaction="/category/create" formmethod="post">Thêm mới</button>
+        <button formaction="/category/update" formmethod="post">Cập nhật</button>
+        <a th:href="@{|/category/delete/${item.id}|}" 
+           onclick="return confirm('Bạn có chắc muốn xóa không?')">Xóa</a>
+        <a href="/category/index">Làm mới</a>
+    </form>
+</div>
+</body>
+</html>

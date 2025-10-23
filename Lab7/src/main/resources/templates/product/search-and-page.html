@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tìm & Phân trang</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #eee;
+    }
+    input, button {
+      padding: 5px 10px;
+      margin-right: 5px;
+    }
+    .pagination a {
+      text-decoration: none;
+      color: blue;
+      margin-right: 10px;
+    }
+    .pagination a.disabled {
+      color: #aaa;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Tìm sản phẩm theo tên (kết hợp phân trang)</h2>
+
+<form th:action="@{/product/search-and-page}" method="post">
+  <input name="keywords" th:value="${keywords}" placeholder="Nhập từ khóa..." />
+  <button type="submit">Tìm kiếm</button>
+</form>
+
+<hr/>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên sản phẩm</th>
+      <th>Giá</th>
+      <th>Loại hàng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:if="${#lists.isEmpty(page.content)}">
+      <td colspan="4" style="text-align:center;">Không có sản phẩm nào được tìm thấy</td>
+    </tr>
+
+    <tr th:each="item : ${page.content}">
+      <td th:text="${item.id}">1</td>
+      <td th:text="${item.name}">Tên sản phẩm</td>
+      <td th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')}">0</td>
+      <td th:text="${item.category != null ? item.category.name : ''}">Loại hàng</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Phân trang -->
+<div class="pagination" style="margin-top:15px;">
+  <a th:classappend="${page.first} ? 'disabled'" th:href="@{|/product/search-and-page?p=0|}">Trang đầu</a>
+  <a th:classappend="${page.first} ? 'disabled'" th:href="@{|/product/search-and-page?p=${page.number - 1}|}">Trước</a>
+  <a th:classappend="${page.last} ? 'disabled'" th:href="@{|/product/search-and-page?p=${page.number + 1}|}">Sau</a>
+  <a th:classappend="${page.last} ? 'disabled'" th:href="@{|/product/search-and-page?p=${page.totalPages - 1}|}">Trang cuối</a>
+</div>
+
+<ul>
+  <li>Số sản phẩm hiển thị: <span th:text="${page.numberOfElements}">0</span></li>
+  <li>Trang hiện tại: <span th:text="${page.number + 1}">1</span> / <span th:text="${page.totalPages}">0</span></li>
+  <li>Kích thước mỗi trang: <span th:text="${page.size}">5</span></li>
+  <li>Tổng số sản phẩm: <span th:text="${page.totalElements}">0</span></li>
+</ul>
+
+</body>
+</html>
